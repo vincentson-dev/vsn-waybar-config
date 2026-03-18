@@ -1,0 +1,128 @@
+* {
+    font-family: 'JetBrainsMono Nerd Font', 'JetBrains Mono', monospace;
+    font-size: 12px;
+    font-weight: 400;
+    border: none;
+    border-radius: 0;
+    min-height: 0;
+    padding: 0;
+    margin: 0;
+}
+
+window#waybar {
+    background: rgba(10, 10, 10, 0.95);
+    color: #c0c0c0;
+    border-bottom: 1px solid #222222;
+}
+
+tooltip {
+    background: #0a0a0a;
+    border: 1px solid #333333;
+    color: #c0c0c0;
+    padding: 6px 10px;
+}
+
+tooltip label { color: #c0c0c0; }
+
+/* ── Arch logo ───────────────────────────────────────── */
+#custom-arch {
+    font-size: 14px;
+    color: #c0c0c0;
+    padding: 0 12px;
+    margin: 0 4px;
+    transition: color 0.15s ease;
+}
+
+#custom-arch:hover { color: #ffffff; }
+
+/* ── Separator ───────────────────────────────────────── */
+#custom-sep {
+    color: #2a2a2a;
+    padding: 0;
+    margin: 0;
+    font-size: 14px;
+}
+
+/* ── Workspaces ──────────────────────────────────────── */
+#workspaces { padding: 0 6px; }
+
+#workspaces button {
+    color: #606060;
+    background: transparent;
+    padding: 0 5px;
+    font-size: 13px;
+    border-bottom: 1px solid transparent;
+    transition: color 0.1s ease;
+}
+
+#workspaces button.active {
+    color: #ffffff;
+    border-bottom: 1px solid #ffffff;
+}
+
+#workspaces button:hover {
+    color: #888888;
+    background: transparent;
+    border-bottom: 1px solid #555555;
+    box-shadow: none;
+}
+
+#workspaces button.urgent {
+    color: #cc3333;
+    border-bottom: 1px solid #cc3333;
+}
+
+/* ── All modules base ────────────────────────────────── */
+#cpu,
+#memory,
+#network,
+#bluetooth,
+#pulseaudio,
+#custom-powermode,
+#custom-clock-nyc,
+#custom-clock-ph,
+#clock,
+#battery,
+#tray {
+    color: #c0c0c0;
+    padding: 0 12px;
+    border-left: 1px solid #1c1c1c;
+    transition: color 0.15s ease;
+}
+
+#cpu:hover,
+#memory:hover,
+#network:hover,
+#bluetooth:hover,
+#pulseaudio:hover,
+#custom-powermode:hover,
+#battery:hover { color: #ffffff; }
+
+/* ── States ──────────────────────────────────────────── */
+#cpu.warning, #memory.warning { color: #999999; }
+#cpu.critical, #memory.critical {
+    color: #cc3333;
+    animation: pulse 0.8s ease infinite alternate;
+}
+
+#network.disconnected { color: #2a2a2a; }
+#bluetooth.disabled   { color: #2a2a2a; }
+#bluetooth.connected  { color: #ffffff; }
+#pulseaudio.muted     { color: #2a2a2a; }
+
+#battery.charging { color: #ffffff; }
+#battery.warning:not(.charging)  { color: #888888; }
+#battery.critical:not(.charging) {
+    color: #cc3333;
+    animation: pulse 1s ease infinite alternate;
+}
+
+/* ── Tray ────────────────────────────────────────────── */
+#tray > .passive { -gtk-icon-effect: dim; }
+#tray > .needs-attention { -gtk-icon-effect: highlight; }
+
+/* ── Pulse animation ─────────────────────────────────── */
+@keyframes pulse {
+    from { opacity: 1.0; }
+    to   { opacity: 0.4; }
+}
